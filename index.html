@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milena 💖 Valentine</title>
     <style>
         body {
@@ -11,56 +12,76 @@
             text-align: center;
             color: #ff4d88;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         h1 {
             margin-top: 40px;
-            font-size: 3em;
-            text-shadow: 2px 2px #fff;
+            font-size: 3.5em;
+            text-shadow: 3px 3px #fff;
+            margin-bottom: 10px;
         }
 
         h2 {
             font-size: 1.8em;
-            margin-top: 10px;
+            margin-top: 0;
+            background: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 77, 136, 0.2);
         }
 
-        /* Падающие сердечки */
+        /* Padające serduszka */
         .heart {
             position: fixed;
             top: -10px;
-            font-size: 20px;
+            font-size: 25px;
             animation: fall linear forwards;
             pointer-events: none;
+            z-index: 999;
         }
 
         @keyframes fall {
             to {
-                transform: translateY(110vh);
+                transform: translateY(110vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
+        /* Galeria z Twoimi zdjęciami */
         .cats {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 40px 0;
+            margin: 30px auto;
             gap: 20px;
+            max-width: 1000px;
+            padding: 20px;
         }
 
         .cats img {
-            width: 220px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover; /* Sprawia, że zdjęcia są równe */
             border-radius: 20px;
+            border: 5px solid white;
             box-shadow: 0 10px 20px rgba(255, 77, 136, 0.3);
-            transition: transform 0.3s;
+            transition: transform 0.3s, rotate 0.3s;
         }
 
+        /* Efekt lekkiego rozrzucenia zdjęć */
+        .cats img:nth-child(odd) { rotate: -3deg; }
+        .cats img:nth-child(even) { rotate: 3deg; }
+
         .cats img:hover {
-            transform: scale(1.08);
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
         }
 
         .buttons {
             position: relative;
+            height: 150px;
             margin-top: 20px;
         }
 
@@ -68,28 +89,33 @@
             background-color: #ff4d88;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 30px;
+            padding: 18px 40px;
+            font-size: 1.5em;
+            border-radius: 50px;
             cursor: pointer;
-            margin: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            box-shadow: 0 8px 20px rgba(255, 77, 136, 0.4);
+            transition: transform 0.2s, background-color 0.3s;
+            font-weight: bold;
         }
 
         .button:hover {
-            transform: scale(1.05);
+            background-color: #ff1a66;
+            transform: scale(1.1);
         }
 
         .no-button {
-            background-color: #ffd1e1;
-            color: #ff4d88;
+            background-color: #ffb3cc;
+            color: white;
             position: absolute;
+            font-size: 1.1em;
+            padding: 10px 25px;
+            z-index: 100;
         }
 
         .footer {
-            margin: 40px 0;
-            font-size: 1.2em;
+            margin: 50px 0;
+            font-size: 1.4em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -99,14 +125,15 @@
     <h2>Będziesz moją walentynką? 🐱💘</h2>
 
     <div class="cats">
-        <img src="https://placekitten.com/300/300" alt="Kitten">
-        <img src="https://placekitten.com/301/300" alt="Kitten">
-        <img src="https://placekitten.com/300/301" alt="Kitten">
-        <img src="https://placekitten.com/302/300" alt="Kitten">
+        <img src="1.png" alt="Piesek z różą">
+        <img src="2.png" alt="Kotek I love you more">
+        <img src="3.png" alt="Chomik z sercem">
+        <img src="4.png" alt="Kotek z serduszkiem">
+        <img src="5.png" alt="Ludzik z kwiatami">
     </div>
 
     <div class="buttons">
-        <button class="button" onclick="alert('Yaaay! 💖😻 Wiedziałem!')">
+        <button class="button" onclick="celebrate()">
             Tak! 💕
         </button>
 
@@ -120,9 +147,9 @@
     </div>
 
     <script>
-        /* Убегающая кнопка "Nie" */
         const noBtn = document.getElementById("noBtn");
 
+        // Uciekający przycisk "Nie"
         noBtn.addEventListener("mouseover", () => {
             const x = Math.random() * (window.innerWidth - 150);
             const y = Math.random() * (window.innerHeight - 150);
@@ -130,11 +157,21 @@
             noBtn.style.top = y + "px";
         });
 
-        /* Падающие сердечки */
+        // Funkcja po kliknięciu "Tak"
+        function celebrate() {
+            alert('Yaaay! 💖😻 Wiedziałem! Jesteś najlepsza!');
+            // Zwiększenie intensywności serduszek
+            for(let i=0; i<50; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
+
+        // Tworzenie padających serduszek
         function createHeart() {
+            const hearts = ["💗", "💖", "💕", "💘", "🌹"];
             const heart = document.createElement("div");
             heart.classList.add("heart");
-            heart.innerText = "💗";
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = (2 + Math.random() * 3) + "s";
             document.body.appendChild(heart);
@@ -144,7 +181,7 @@
             }, 5000);
         }
 
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 400);
     </script>
 
 </body>

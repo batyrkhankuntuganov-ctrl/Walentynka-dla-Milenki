@@ -3,186 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milena 💖 Valentine</title>
+    <title>Dla Mileny 💖</title>
     <style>
         body {
             margin: 0;
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffd6e8, #ffffff);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
             text-align: center;
-            color: #ff4d88;
+            color: #d63384;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        h1 {
-            margin-top: 40px;
-            font-size: 3.5em;
-            text-shadow: 3px 3px #fff;
-            margin-bottom: 10px;
-        }
+        h1 { margin-top: 30px; font-size: 2.5em; text-shadow: 2px 2px white; }
+        h2 { font-size: 1.2em; margin-bottom: 20px; background: white; display: inline-block; padding: 10px; border-radius: 20px; }
 
-        h2 {
-            font-size: 1.8em;
-            margin-top: 0;
-            background: white;
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(255, 77, 136, 0.2);
-        }
-
-        /* Padające serduszka */
-        .heart {
-            position: fixed;
-            top: -10px;
-            font-size: 25px;
-            animation: fall linear forwards;
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Galeria z Twoimi zdjęciami */
-        .cats {
+        .container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px auto;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
-            max-width: 1000px;
             padding: 20px;
         }
 
-        .cats img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover; /* Sprawia, że zdjęcia są równe */
-            border-radius: 20px;
-            border: 5px solid white;
-            box-shadow: 0 10px 20px rgba(255, 77, 136, 0.3);
-            transition: transform 0.3s, rotate 0.3s;
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 90%;
         }
 
-        /* Efekt lekkiego rozrzucenia zdjęć */
-        .cats img:nth-child(odd) { rotate: -3deg; }
-        .cats img:nth-child(even) { rotate: 3deg; }
-
-        .cats img:hover {
-            transform: scale(1.1) rotate(0deg);
-            z-index: 10;
+        .card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            display: block;
         }
 
-        .buttons {
-            position: relative;
-            height: 150px;
-            margin-top: 20px;
+        .card p {
+            margin: 10px 0 5px 0;
+            font-weight: bold;
         }
 
-        .button {
-            background-color: #ff4d88;
-            color: white;
+        .buttons { height: 150px; margin-top: 20px; position: relative; width: 100%; }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
             border: none;
-            padding: 18px 40px;
-            font-size: 1.5em;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 77, 136, 0.4);
-            transition: transform 0.2s, background-color 0.3s;
             font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .button:hover {
-            background-color: #ff1a66;
-            transform: scale(1.1);
+        .btn-yes { background-color: #ff4d88; color: white; }
+        .btn-no { background-color: #fff; color: #ff4d88; position: absolute; left: 50%; transform: translateX(20px); }
+
+        .heart {
+            position: fixed;
+            top: -20px;
+            font-size: 20px;
+            animation: fall linear forwards;
+            pointer-events: none;
         }
 
-        .no-button {
-            background-color: #ffb3cc;
-            color: white;
-            position: absolute;
-            font-size: 1.1em;
-            padding: 10px 25px;
-            z-index: 100;
-        }
-
-        .footer {
-            margin: 50px 0;
-            font-size: 1.4em;
-            font-weight: bold;
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <h1>Milena 💕</h1>
-    <h2>Będziesz moją walentynką? 🐱💘</h2>
+    <h2>Będziesz moją walentynką? 💘</h2>
 
-    <div class="cats">
-        <img src="1.png" alt="Piesek z różą">
-        <img src="2.png" alt="Kotek I love you more">
-        <img src="3.png" alt="Chomik z sercem">
-        <img src="4.png" alt="Kotek z serduszkiem">
-        <img src="5.png" alt="Ludzik z kwiatami">
+    <div class="container">
+        <div class="card">
+            <img src="1.JPG">
+            <p>Piesek z różą 🐶</p>
+        </div>
+        <div class="card">
+            <img src="2.JPG">
+            <p>I love you more! 🐱</p>
+        </div>
+        <div class="card">
+            <img src="3.JPG">
+            <p>Dla Ciebie! 🐹</p>
+        </div>
+        <div class="card">
+            <img src="4.JPG">
+            <p>Słodziak 😽</p>
+        </div>
+        <div class="card">
+            <img src="5.JPG">
+            <p>Kwiatuszki 🌸</p>
+        </div>
     </div>
 
     <div class="buttons">
-        <button class="button" onclick="celebrate()">
-            Tak! 💕
-        </button>
-
-        <button class="button no-button" id="noBtn">
-            Nie 😼
-        </button>
-    </div>
-
-    <div class="footer">
-        Z miłością dla Mileny 😽💗
+        <button class="btn btn-yes" onclick="answer()">TAK! 💖</button>
+        <button class="btn btn-no" id="noBtn">Nie 😼</button>
     </div>
 
     <script>
-        const noBtn = document.getElementById("noBtn");
+        const noBtn = document.getElementById('noBtn');
+        
+        noBtn.addEventListener('touchstart', moveButton);
+        noBtn.addEventListener('mouseover', moveButton);
 
-        // Uciekający przycisk "Nie"
-        noBtn.addEventListener("mouseover", () => {
-            const x = Math.random() * (window.innerWidth - 150);
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 150);
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-        });
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
 
-        // Funkcja po kliknięciu "Tak"
-        function celebrate() {
-            alert('Yaaay! 💖😻 Wiedziałem! Jesteś najlepsza!');
-            // Zwiększenie intensywności serduszek
-            for(let i=0; i<50; i++) {
-                setTimeout(createHeart, i * 50);
+        function answer() {
+            alert('Yaaay! 😍 Wiedziałem! Szczęśliwych Walentynek! 💗');
+            for(let i=0; i<100; i++) {
+                setTimeout(createHeart, i * 20);
             }
         }
 
-        // Tworzenie padających serduszek
         function createHeart() {
-            const hearts = ["💗", "💖", "💕", "💘", "🌹"];
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
             document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+            setTimeout(() => heart.remove(), 5000);
         }
 
         setInterval(createHeart, 400);
     </script>
-
 </body>
 </html>
